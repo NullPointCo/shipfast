@@ -1,0 +1,22 @@
+services:
+  - type: web
+    name: nullpointer-app
+    env: python
+    buildCommand: pip install -r requirements.txt && python manage.py collectstatic --noinput
+    startCommand: gunicorn core.wsgi:application
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: app-db
+          property: connectionString
+      - key: SECRET_KEY
+        generateValue: true
+      - key: DEBUG
+        value: "False"
+      - key: ALLOWED_HOSTS
+        value: ".onrender.com"
+      - key: STRIPE_SECRET_KEY
+        sync: false
+databases:
+  - name: app-db
+    plan: free
