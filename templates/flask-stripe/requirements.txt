@@ -1,0 +1,9 @@
+flask==3.*
+flask-sqlalchemy==3.*
+flask-jwt-extended==4.*
+flask-bcrypt==1.*
+stripe==9.*
+gunicorn==21.*
+psycopg2-binary==2.*
+python-dotenv==1.*
+pytest==8.*

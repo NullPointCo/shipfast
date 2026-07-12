@@ -18,6 +18,7 @@ python3 shipfast.py create my-saas --stack fastapi-stripe
 python3 shipfast.py create my-webapp --stack nextjs-supabase
 python3 shipfast.py create my-api --stack fastapi-supabase
 python3 shipfast.py create my-webapp --stack sveltekit-supabase
+python3 shipfast.py create my-flask --stack flask-stripe
 ```
 
 ## Stacks
@@ -25,6 +26,7 @@ python3 shipfast.py create my-webapp --stack sveltekit-supabase
 | Stack | Stack | Includes |
 |-------|-------|----------|
 | `fastapi-stripe` | FastAPI + PostgreSQL + Stripe | JWT auth, SQLAlchemy models, Docker Compose, Render deploy, tests |
+| `flask-stripe` | Flask 3 + PostgreSQL + Stripe | JWT auth, SQLAlchemy models, Checkout subscriptions, webhooks, Docker, Render, tests |
 | `nextjs-supabase` | Next.js 14 + Supabase | App Router, SSR auth, protected routes, TypeScript |
 | `django-stripe` | Django 5 + PostgreSQL + Stripe | Custom User, auth flows, Checkout subscriptions, webhooks, Docker, Render, tests |
 | `fastapi-supabase` | FastAPI + Supabase + Stripe | Supabase Auth/JWT, lazy clients, Checkout subscriptions, webhook, Docker, Render, tests |
