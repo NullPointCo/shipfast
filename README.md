@@ -27,6 +27,7 @@ python3 shipfast.py create my-api --stack fastapi-supabase
 | `nextjs-supabase` | Next.js 14 + Supabase | App Router, SSR auth, protected routes, TypeScript |
 | `django-stripe` | Django 5 + PostgreSQL + Stripe | Custom User, auth flows, Checkout subscriptions, webhooks, Docker, Render, tests |
 | `fastapi-supabase` | FastAPI + Supabase + Stripe | Supabase Auth/JWT, lazy clients, Checkout subscriptions, webhook, Docker, Render, tests |
+| `nextjs-stripe` | Next.js 14 + Stripe | App Router, TypeScript, Checkout subscriptions, signed webhooks, Docker, pricing page |
 
 ## What you get
 - Working backend with auth

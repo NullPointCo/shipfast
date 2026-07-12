@@ -29,7 +29,12 @@ def copy_template(src_dir, dest_name):
                 pass
     lines = len([f for r,d,fs in os.walk(dest) for f in fs])
     print(f"Created {dest_name}/ ({lines} files)")
-    print(f"Next: cd {dest_name} && pip install -r requirements.txt")
+    if os.path.exists(os.path.join(dest, "requirements.txt")):
+        print(f"Next: cd {dest_name} && pip install -r requirements.txt")
+    elif os.path.exists(os.path.join(dest, "package.json")):
+        print(f"Next: cd {dest_name} && npm install && npm run dev")
+    else:
+        print(f"Next: cd {dest_name}")
 
 def main():
     desc = "shipfast - Production-ready SaaS boilerplate generator"
