@@ -1,16 +1,27 @@
-// {{PROJECT_NAME}} - Landing page
-import Link from 'next/link'
+import Link from "next/link";
+import { createClient } from "@/lib/supabase/server";
 
-export default function Home() {
+export default async function Home() {
+  const supabase = createClient();
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+
   return (
-    <main style={{ maxWidth: 800, margin: '0 auto', padding: 40, fontFamily: 'system-ui' }}>
+    <main className="container">
       <h1>{{PROJECT_NAME}}</h1>
-      <p>Built with Next.js App Router + Supabase Auth.</p>
-      <nav style={{ display: 'flex', gap: 16 }}>
-        <Link href="/login">Login</Link>
-        <Link href="/signup">Sign Up</Link>
-        <Link href="/dashboard">Dashboard</Link>
-      </nav>
+      <p>Production-ready Next.js 14 + Supabase SaaS starter.</p>
+      {user ? (
+        <p>
+          Signed in as <strong>{user.email}</strong>.{" "}
+          <Link href="/dashboard">Go to dashboard &rarr;</Link>
+        </p>
+      ) : (
+        <p>
+          <Link href="/login">Log in</Link> &middot;{" "}
+          <Link href="/signup">Sign up</Link>
+        </p>
+      )}
     </main>
-  )
+  );
 }
