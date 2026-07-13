@@ -18,6 +18,7 @@ python3 shipfast.py create my-saas --stack fastapi-stripe
 python3 shipfast.py create my-webapp --stack nextjs-supabase
 python3 shipfast.py create my-api --stack fastapi-supabase
 python3 shipfast.py create my-webapp --stack sveltekit-supabase
+python3 shipfast.py create my-app --stack sveltekit-stripe
 ```
 
 ## Stacks
@@ -30,6 +31,7 @@ python3 shipfast.py create my-webapp --stack sveltekit-supabase
 | `fastapi-supabase` | FastAPI + Supabase + Stripe | Supabase Auth/JWT, lazy clients, Checkout subscriptions, webhook, Docker, Render, tests |
 | `nextjs-stripe` | Next.js 14 + Stripe | App Router, TypeScript, Checkout subscriptions, signed webhooks, Docker, pricing page |
 | `sveltekit-supabase` | SvelteKit + Supabase | File-based routing, SSR auth, protected routes, TypeScript, `adapter-node` Docker |
+| `sveltekit-stripe` | SvelteKit 2 + Stripe | SSR file routing, Stripe Checkout (subscriptions), signed webhooks, TypeScript, `adapter-node` Docker |
 
 ## What you get
 - Working backend with auth
