@@ -22,6 +22,7 @@ python3 shipfast.py create my-app --stack sveltekit-stripe
 python3 shipfast.py create my-flask --stack flask-stripe
 python3 shipfast.py create my-express --stack express-stripe
 python3 shipfast.py create my-saas --stack nextjs-lemonsqueezy
+python3 shipfast.py create my-astro --stack astro-stripe
 ```
 
 ## Stacks
@@ -35,6 +36,7 @@ python3 shipfast.py create my-saas --stack nextjs-lemonsqueezy
 | `nextjs-stripe` | Next.js 14 + Stripe | App Router, TypeScript, Checkout subscriptions, signed webhooks, Docker, pricing page |
 | `nextjs-supabase` | Next.js 14 + Supabase | App Router, SSR auth, protected routes, TypeScript |
 | `nextjs-lemonsqueezy` | Next.js 14 + Lemon Squeezy | App Router, TypeScript, hosted checkout, HMAC-signed webhooks, global tax handled, Docker |
+| `astro-stripe` | Astro 4 + Stripe | Server-rendered, subscription Checkout, signed webhooks, pricing page, Docker |
 | `express-stripe` | Node + Express + PostgreSQL + Stripe | JWT auth, bcrypt, Checkout subscriptions, webhook, Docker, Render, Jest tests |
 | `sveltekit-supabase` | SvelteKit + Supabase | File-based routing, SSR auth, protected routes, TypeScript, `adapter-node` Docker |
 | `sveltekit-stripe` | SvelteKit 2 + Stripe | SSR file routing, Stripe Checkout (subscriptions), signed webhooks, TypeScript, `adapter-node` Docker |

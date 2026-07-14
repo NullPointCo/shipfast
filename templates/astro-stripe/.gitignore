@@ -1,0 +1,11 @@
+# build output
+dist/
+.output/
+node_modules/
+# env
+.env
+.env.local
+# logs
+*.log
+# os
+.DS_Store

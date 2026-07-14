@@ -1,0 +1,74 @@
+---
+import Layout from "../layouts/Layout.astro";
+
+const starterPrice = import.meta.env.PUBLIC_STRIPE_STARTER_PRICE_ID ?? "";
+const proPrice = import.meta.env.PUBLIC_STRIPE_PRO_PRICE_ID ?? "";
+const success = Astro.url.searchParams.get("success");
+const canceled = Astro.url.searchParams.get("canceled");
+---
+
+<Layout title="{{PROJECT_NAME}}">
+  <main style="max-width: 880px; margin: 0 auto; padding: 4rem 1.5rem;">
+    <h1 style="font-size: 2.5rem; margin-bottom: 0.5rem;">{{PROJECT_NAME}}</h1>
+    <p style="opacity: 0.8; font-size: 1.1rem;">
+      Astro + Stripe SaaS starter. Subscription checkout, signed webhooks,
+      Docker-ready.
+    </p>
+
+    {success && (
+      <p style="background:#064e3b; padding:0.75rem 1rem; border-radius:8px;">
+        🎉 Payment successful — welcome aboard!
+      </p>
+    )}
+    {canceled && (
+      <p style="background:#7f1d1d; padding:0.75rem 1rem; border-radius:8px;">
+        Checkout canceled. No worries — try again anytime.
+      </p>
+    )}
+
+    <section style="display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:1.5rem; margin-top:2.5rem;">
+      <article style="border:1px solid #1e293b; border-radius:12px; padding:1.5rem;">
+        <h2 style="margin-top:0;">Starter</h2>
+        <p style="font-size:2rem; font-weight:700;">$9<span style="font-size:1rem; opacity:0.6;">/mo</span></p>
+        <button data-price={starterPrice} class="buy" style="width:100%; padding:0.75rem; border:0; border-radius:8px; background:var(--accent); color:#0f172a; font-weight:600; cursor:pointer;">
+          Subscribe
+        </button>
+      </article>
+
+      <article style="border:1px solid var(--accent); border-radius:12px; padding:1.5rem;">
+        <h2 style="margin-top:0;">Pro</h2>
+        <p style="font-size:2rem; font-weight:700;">$29<span style="font-size:1rem; opacity:0.6;">/mo</span></p>
+        <button data-price={proPrice} class="buy" style="width:100%; padding:0.75rem; border:0; border-radius:8px; background:var(--accent); color:#0f172a; font-weight:600; cursor:pointer;">
+          Subscribe
+        </button>
+      </article>
+    </section>
+  </main>
+</Layout>
+
+<script>
+  document.querySelectorAll<HTMLButtonElement>("button.buy").forEach((btn) => {
+    btn.addEventListener("click", async () => {
+      const priceId = btn.dataset.price;
+      if (!priceId) {
+        alert("Set PUBLIC_STRIPE_*_PRICE_ID in .env first.");
+        return;
+      }
+      btn.disabled = true;
+      btn.textContent = "Redirecting…";
+      const res = await fetch("/api/checkout", {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({ priceId }),
+      });
+      const data = await res.json();
+      if (data.url) {
+        window.location.href = data.url;
+      } else {
+        alert(data.error ?? "Checkout failed");
+        btn.disabled = false;
+        btn.textContent = "Subscribe";
+      }
+    });
+  });
+</script>
