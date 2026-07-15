@@ -1,6 +1,9 @@
 import { createBrowserClient } from "@supabase/ssr";
 
-/** Browser-side Supabase client (runs in the user's browser). */
+/**
+ * Supabase client for Client Components (runs in the browser).
+ * The anon key is safe to expose — Row Level Security protects your data.
+ */
 export function createClient() {
   return createBrowserClient(
     process.env.NEXT_PUBLIC_SUPABASE_URL!,

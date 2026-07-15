@@ -1,7 +1,10 @@
 import { createServerClient } from "@supabase/ssr";
 import { cookies } from "next/headers";
 
-/** Server-side Supabase client (Server Components, Route Handlers, Server Actions). */
+/**
+ * Supabase client for Server Components, Route Handlers, and Server Actions.
+ * Reads/writes the auth session via Next.js's cookie store.
+ */
 export function createClient() {
   const cookieStore = cookies();
 
@@ -19,8 +22,9 @@ export function createClient() {
               cookieStore.set(name, value, options)
             );
           } catch {
-            // Called from a Server Component — safe to ignore.
-            // The middleware refreshes the session and writes cookies.
+            // `setAll` is called from a Server Component render; Next.js
+            // throws because cookies are read-only there. The middleware
+            // already refreshed the session, so this is safe to ignore.
           }
         },
       },
