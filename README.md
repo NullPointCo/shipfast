@@ -20,6 +20,8 @@ python3 shipfast.py create my-api --stack fastapi-supabase
 python3 shipfast.py create my-webapp --stack sveltekit-supabase
 python3 shipfast.py create my-app --stack sveltekit-stripe
 python3 shipfast.py create my-flask --stack flask-stripe
+python3 shipfast.py create my-django --stack django-stripe
+python3 shipfast.py create my-django --stack django-supabase
 python3 shipfast.py create my-express --stack express-stripe
 python3 shipfast.py create my-saas --stack nextjs-lemonsqueezy
 python3 shipfast.py create my-astro --stack astro-stripe
@@ -32,6 +34,7 @@ python3 shipfast.py create my-astro --stack astro-stripe
 | `fastapi-stripe` | FastAPI + PostgreSQL + Stripe | JWT auth, SQLAlchemy models, Docker Compose, Render deploy, tests |
 | `flask-stripe` | Flask 3 + PostgreSQL + Stripe | JWT auth, Flask-SQLAlchemy models, Checkout subscriptions, webhooks, Docker, Render, tests |
 | `django-stripe` | Django 5 + PostgreSQL + Stripe | Custom User, auth flows, Checkout subscriptions, webhooks, Docker, Render, tests |
+| `django-supabase` | Django 5 + Supabase + Stripe | Supabase JWT auth middleware, Profile↔sub link, Checkout subscriptions, webhooks, Docker, Render, tests |
 | `fastapi-supabase` | FastAPI + Supabase + Stripe | Supabase Auth/JWT, lazy clients, Checkout subscriptions, webhook, Docker, Render, tests |
 | `nextjs-stripe` | Next.js 14 + Stripe | App Router, TypeScript, Checkout subscriptions, signed webhooks, Docker, pricing page |
 | `nextjs-supabase` | Next.js 14 + Supabase | App Router, SSR auth, protected routes, TypeScript |

@@ -1,0 +1,8 @@
+{% extends "accounts/base.html" %}
+{% block title %}Profile &middot; {{PROJECT_NAME}}{% endblock %}
+{% block content %}
+  <h1>Your profile</h1>
+  <p>Email: {{ user.email }}</p>
+  <p>Plan: {{ user.plan|default:"free" }}</p>
+  <p>Pro member: {{ user.is_pro }}</p>
+{% endblock %}

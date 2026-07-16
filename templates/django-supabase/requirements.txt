@@ -1,0 +1,8 @@
+Django==5.0.*
+gunicorn==21.*
+psycopg[binary]==3.*
+django-environ==0.*
+stripe==9.*
+PyJWT==2.*
+pytest==8.*
+pytest-django==4.*

@@ -1,0 +1,9 @@
+{% extends "accounts/base.html" %}
+{% block title %}Home &middot; {{PROJECT_NAME}}{% endblock %}
+{% block content %}
+  <h1>Welcome to {{PROJECT_NAME}}</h1>
+  <p>A production-ready Django + Supabase + Stripe SaaS starter by NullPointerCo.</p>
+  <p>Authentication is handled by <strong>Supabase</strong> (email, OAuth, magic link).
+     This backend exposes the API, webhooks, and Stripe billing.</p>
+  <p><a class="btn" href="/subscriptions/pricing/">See pricing</a></p>
+{% endblock %}

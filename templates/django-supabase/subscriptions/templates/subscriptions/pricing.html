@@ -1,0 +1,14 @@
+{% extends "accounts/base.html" %}
+{% block title %}Pricing &middot; {{PROJECT_NAME}}{% endblock %}
+{% block content %}
+  <h1>Choose your plan</h1>
+  <div style="display:flex; gap:1rem; flex-wrap:wrap;">
+    {% for key, plan in plans.items %}
+      <div style="border:1px solid #cbd5e1; border-radius:8px; padding:1.5rem; width:220px;">
+        <h2>{{ plan.name }}</h2>
+        <p>{{ plan.price }}</p>
+        <a class="btn" href="/subscriptions/checkout/{{ key }}/">Subscribe</a>
+      </div>
+    {% endfor %}
+  </div>
+{% endblock %}

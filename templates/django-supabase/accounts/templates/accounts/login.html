@@ -1,0 +1,9 @@
+{% extends "accounts/base.html" %}
+{% block title %}Login &middot; {{PROJECT_NAME}}{% endblock %}
+{% block content %}
+  <h1>Login with Supabase</h1>
+  <p>Authentication is handled by Supabase on the frontend. Send the Supabase
+     access token as a <code>Bearer</code> header and this backend resolves your
+     user automatically.</p>
+  <p><a class="btn" href="/subscriptions/pricing/">Browse plans</a></p>
+{% endblock %}
