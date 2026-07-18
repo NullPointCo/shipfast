@@ -1,0 +1,22 @@
+services:
+  - type: web
+    name: nullpointer-app
+    env: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn app.main:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: app-db
+          property: connectionString
+      - key: LEMONSQUEEZY_API_KEY
+        sync: false
+      - key: LEMONSQUEEZY_STORE_ID
+        sync: false
+      - key: LEMONSQUEEZY_WEBHOOK_SECRET
+        sync: false
+      - key: SECRET_KEY
+        sync: false
+databases:
+  - name: app-db
+    plan: free
